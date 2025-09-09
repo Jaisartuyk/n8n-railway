@@ -1,0 +1,8 @@
+{
+  "build": {
+    "builder": "docker"
+  },
+  "deploy": {
+    "startCommand": "n8n"
+  }
+}
