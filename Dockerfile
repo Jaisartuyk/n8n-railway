@@ -13,11 +13,6 @@ ENV N8N_PORT=5678
 
 # Conexión a PostgreSQL (Railway)
 ENV DB_TYPE=postgresdb
-ENV DB_POSTGRESDB_HOST=${PGHOST}
-ENV DB_POSTGRESDB_PORT=${PGPORT}
-ENV DB_POSTGRESDB_USER=${PGUSER}
-ENV DB_POSTGRESDB_PASSWORD=${PGPASSWORD}
-ENV DB_POSTGRESDB_DATABASE=${PGDATABASE}
 ENV DB_POSTGRESDB_SSL=true
 
 # Autenticación básica (opcional)
@@ -25,5 +20,7 @@ ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
 ENV N8N_BASIC_AUTH_PASSWORD=tu_contraseña_segura
 
-# Comando de inicio
-ENTRYPOINT ["n8n", "start"]
+# Copiar y ejecutar script de inicio
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
