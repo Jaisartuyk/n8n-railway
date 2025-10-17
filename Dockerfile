@@ -1,5 +1,4 @@
 # Imagen oficial de n8n
-# Imagen oficial de n8n
 FROM n8nio/n8n:latest
 
 WORKDIR /home/node
@@ -14,7 +13,9 @@ ENV N8N_PORT=5678
 
 # Conexión a PostgreSQL (Railway)
 ENV DB_TYPE=postgresdb
-ENV DB_POSTGRESDB_CONNECTION_URL=postgresql://postgres:vJxAYmyTgpwmgpXkAppgShgoyjTctags@switchyard.proxy.rlwy.net:30512/railway
+ENV DB_POSTGRESDB_CONNECTION_URL=${DATABASE_PUBLIC_URL}
+ENV DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
+ENV DB_POSTGRESDB_SSL_CA=""
 
 # Autenticación básica (opcional)
 ENV N8N_BASIC_AUTH_ACTIVE=true
